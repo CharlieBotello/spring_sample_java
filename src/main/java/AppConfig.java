@@ -1,15 +1,18 @@
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
-import com.fdmgroup.repository.CustomerRepository;
-import com.fdmgroup.repository.HibernateCustomerRepositoryImpl;
-import com.fdmgroup.service.CustomerService;
-import com.fdmgroup.service.CustomerServiceImpl;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @ComponentScan({"com.fdmgroup"})
+@PropertySource("app.properties")
 public class AppConfig {
+	
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer getPropertySourcesPlaceholderConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
 
 //	@Bean(name = "customerService")
 //	public CustomerService getCustomerService() {
